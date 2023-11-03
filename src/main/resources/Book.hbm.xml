@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping>
+  <class name="com.homework.entity.Book" table="books">
+    <id name="id" type="int" column="id"><generator class="native"/></id>
+    <property name="title" type="string" column="title" not-null="true"/>
+    <property name="isbn" type="string" column="isbn" not-null="true" unique="true"/>
+
+    <many-to-one name="author" class="com.homework.entity.Author" column="author_id" not-null="true"/>
+  </class>
+</hibernate-mapping>

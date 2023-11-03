@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping>
+  <class name="com.homework.entity.Author" table="authors">
+    <id name="id" type="int" column="id"><generator class="native"/></id>
+    <property name="name" type="string" column="name" not-null="true"/>
+    <property name="nationality" type="string" column="nationality" not-null="false"/>
+
+    <set name="books" table="books" inverse="true" lazy="true" fetch="select" cascade="all">
+      <key>
+        <column name="author_id" not-null="true"/>
+      </key>
+      <one-to-many class="com.homework.entity.Book"/>
+    </set>
+  </class>
+</hibernate-mapping>
